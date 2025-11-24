@@ -9,6 +9,7 @@ from datetime import datetime
 from dataclasses import dataclass, field
 from typing import List, Dict
 
+
 print("Import successful")
 
 # 1. Memory
@@ -81,27 +82,25 @@ class Coordinator:
         return final_output
 
 # Demo
-# Demo — only run when app.py executed directly, NOT when imported
-if __name__ == "__main__":
-    agent = Coordinator()
-    messages = [
-        "I want to cancel my subscription.",
-        "My invoice amount is wrong.",
-        "I need a refund please.",
-        "Hello, I need help."
-    ]
+agent = Coordinator()
+messages = [
+    "I want to cancel my subscription.",
+    "My invoice amount is wrong.",
+    "I need a refund please.",
+    "Hello, I need help."
+]
 
-    for msg in messages:
-        print("USER:", msg)
-        out = agent.ask(msg)
-        print(json.dumps(out, indent=2))
-        print("-" * 50)
+for msg in messages:
+    print("USER:", msg)
+    out = agent.ask(msg)
+    print(json.dumps(out, indent=2))
+    print("-" * 50)
 
-    print(agent.memory.get_context())
+print(agent.memory.get_context())
 
-    agent = Coordinator()
-    messages = ["I want to cancel my subscription."]
-    for msg in messages:
-        print("USER:", msg)
-        out = agent.ask(msg)
-        print(json.dumps(out, indent=2))
+agent = Coordinator()
+messages = ["I want to cancel my subscription."]
+for msg in messages:
+    print("USER:", msg)
+    out = agent.ask(msg)
+    print(json.dumps(out, indent=2))
